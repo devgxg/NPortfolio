@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-archivo), "Neue Montreal", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #0A0A0A;
+  --color-fg: #FAFAFA;
+  --color-muted: #6B6B6B;
+  --color-hairline: #1F1F1F;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #0A0A0A;
+  color: #FAFAFA;
+  -webkit-font-smoothing: antialiased;
+}
