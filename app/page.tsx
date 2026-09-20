@@ -4,6 +4,7 @@ import WorkSection from '@/components/sections/WorkSection'
 import About from '@/components/sections/About'
 import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
 import Leadership from '@/components/sections/Leadership'
+import Contact from '@/components/sections/Contact'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <About />
       <ExperienceTimeline />
       <Leadership />
+      <Contact />
     </main>
   )
 }
