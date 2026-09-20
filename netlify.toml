@@ -5,6 +5,3 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-  [plugins.inputs]
-    nf_forms_migration = "opt-in"
