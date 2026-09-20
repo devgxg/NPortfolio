@@ -53,22 +53,34 @@ const inputStyle: React.CSSProperties = {
   transition: 'border-color 0.25s',
 }
 
+const ACCESS_KEY = '804b04ef-fa50-459c-80f8-7d319da9a572'
+
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [focused, setFocused] = useState<string | null>(null)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setStatus('sending')
     const form = e.currentTarget
     const data = new FormData(form)
 
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
-    })
-
-    setSubmitted(true)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: ACCESS_KEY,
+          name: data.get('name'),
+          email: data.get('email'),
+          message: data.get('message'),
+        }),
+      })
+      const json = await res.json()
+      setStatus(json.success ? 'success' : 'error')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -138,98 +150,67 @@ export default function Contact() {
           transition={{ delay: 0.35, duration: 0.7, ease: EASE }}
           className="flex-1"
         >
-          {submitted ? (
+          {status === 'success' ? (
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.85rem',
-                fontWeight: 300,
-                color: 'rgba(255,255,255,0.55)',
-                lineHeight: 1.7,
-              }}
+              style={{ fontFamily: 'var(--font-body)', fontSize: '0.85rem', fontWeight: 300, color: 'rgba(255,255,255,0.55)', lineHeight: 1.7 }}
             >
               Thanks — I&apos;ll get back to you soon.
             </motion.p>
           ) : (
-            <form
-              name="contact"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-8"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <p className="hidden">
-                <label>Don&apos;t fill this out: <input name="bot-field" /></label>
-              </p>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
 
               {/* Name */}
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  required
-                  style={{
-                    ...inputStyle,
-                    borderBottomColor: focused === 'name'
-                      ? 'rgba(255,255,255,0.45)'
-                      : 'rgba(255,255,255,0.15)',
-                  }}
-                  onFocus={() => setFocused('name')}
-                  onBlur={() => setFocused(null)}
-                />
-              </div>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                required
+                style={{ ...inputStyle, borderBottomColor: focused === 'name' ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.15)' }}
+                onFocus={() => setFocused('name')}
+                onBlur={() => setFocused(null)}
+              />
 
               {/* Email */}
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  style={{
-                    ...inputStyle,
-                    borderBottomColor: focused === 'email'
-                      ? 'rgba(255,255,255,0.45)'
-                      : 'rgba(255,255,255,0.15)',
-                  }}
-                  onFocus={() => setFocused('email')}
-                  onBlur={() => setFocused(null)}
-                />
-              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                style={{ ...inputStyle, borderBottomColor: focused === 'email' ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.15)' }}
+                onFocus={() => setFocused('email')}
+                onBlur={() => setFocused(null)}
+              />
 
               {/* Message */}
-              <div>
-                <textarea
-                  name="message"
-                  placeholder="Message"
-                  required
-                  rows={5}
-                  style={{
-                    ...inputStyle,
-                    resize: 'none',
-                    borderBottomColor: focused === 'message'
-                      ? 'rgba(255,255,255,0.45)'
-                      : 'rgba(255,255,255,0.15)',
-                  }}
-                  onFocus={() => setFocused('message')}
-                  onBlur={() => setFocused(null)}
-                />
-              </div>
+              <textarea
+                name="message"
+                placeholder="Message"
+                required
+                rows={5}
+                style={{ ...inputStyle, resize: 'none', borderBottomColor: focused === 'message' ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.15)' }}
+                onFocus={() => setFocused('message')}
+                onBlur={() => setFocused(null)}
+              />
+
+              {/* Error */}
+              {status === 'error' && (
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.78rem', fontWeight: 300, color: 'rgba(255,255,255,0.38)' }}>
+                  Something went wrong. Please email me directly instead.
+                </p>
+              )}
 
               {/* Submit */}
               <div>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl text-[0.7rem] tracking-[0.12em] uppercase font-medium bg-[#FAFAFA] text-[#0A0A0A] hover:bg-[#E0E0E0] transition-colors"
+                  disabled={status === 'sending'}
+                  className="px-5 py-2.5 rounded-xl text-[0.7rem] tracking-[0.12em] uppercase font-medium bg-[#FAFAFA] text-[#0A0A0A] hover:bg-[#E0E0E0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  Send Message
+                  {status === 'sending' ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
             </form>
