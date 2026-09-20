@@ -19,7 +19,7 @@ export default function WorkIntro() {
       {/* ── Neural field ambient background ── */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ opacity: 0.13 }}
+        style={{ opacity: 0.38 }}
         aria-hidden
       >
         <NeuralField />
