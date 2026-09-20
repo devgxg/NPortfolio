@@ -135,7 +135,7 @@ export default function ProjectCards({ onRevealDiagram }: ProjectCardsProps) {
           className="text-[#9A9A9A] text-[0.62rem] tracking-[0.28em] uppercase mb-4"
           style={{ fontFamily: 'var(--font-heading)' }}
         >
-          01 — Case Studies
+          01 — My Work
         </motion.p>
 
         <motion.h2

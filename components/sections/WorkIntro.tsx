@@ -7,7 +7,7 @@ const NeuralField = dynamic(() => import('@/components/NeuralField'), { ssr: fal
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
-const TAGS = ['Computer Vision', 'AI Agents', 'Automation Pipelines']
+const TAGS = ['Computer Vision', 'AI Agents', 'Automation Pipelines', 'AI Systems', 'RAG', 'Chatbots']
 
 
 export default function WorkIntro() {
