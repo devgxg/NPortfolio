@@ -19,7 +19,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
       rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
       initial="rest"
       whileHover="hover"
-      className="relative inline-block"
+      className="relative inline-flex items-center gap-1.5 group"
       style={{
         fontFamily: 'var(--font-body)',
         fontSize: '0.85rem',
@@ -28,13 +28,23 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
         lineHeight: 1.8,
       }}
     >
-      {children}
+      <span className="relative">
+        {children}
+        <motion.span
+          variants={{ rest: { scaleX: 0 }, hover: { scaleX: 1 } }}
+          transition={{ duration: 0.3, ease: EASE }}
+          className="absolute bottom-0 left-0 h-px w-full block origin-left"
+          style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}
+        />
+      </span>
       <motion.span
-        variants={{ rest: { scaleX: 0 }, hover: { scaleX: 1 } }}
-        transition={{ duration: 0.3, ease: EASE }}
-        className="absolute bottom-0 left-0 h-px w-full block origin-left"
-        style={{ backgroundColor: 'rgba(255,255,255,0.5)' }}
-      />
+        variants={{ rest: { opacity: 0, x: -6 }, hover: { opacity: 1, x: 0 } }}
+        transition={{ duration: 0.25, ease: EASE }}
+        aria-hidden
+        style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}
+      >
+        →
+      </motion.span>
     </motion.a>
   )
 }
@@ -219,17 +229,30 @@ export default function Contact() {
 
       </div>
 
-      {/* ── Footer ── */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="text-[0.6rem] tracking-[0.18em] uppercase"
-        style={{ fontFamily: 'var(--font-heading)', color: '#2A2A2A' }}
-      >
-        © 2026 Dev Garg
-      </motion.p>
+      {/* ── Built with + Footer ── */}
+      <div className="flex flex-col items-center gap-3">
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="text-[0.72rem]"
+          style={{ fontFamily: 'var(--font-body)', fontWeight: 300, color: '#2A2A2A' }}
+        >
+          Built with 🤍 by DEV
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-[0.6rem] tracking-[0.18em] uppercase"
+          style={{ fontFamily: 'var(--font-heading)', color: '#2A2A2A' }}
+        >
+          © 2026 Dev Garg
+        </motion.p>
+      </div>
     </section>
   )
 }
