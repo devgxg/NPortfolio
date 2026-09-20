@@ -3,6 +3,7 @@ import WorkIntro from '@/components/sections/WorkIntro'
 import WorkSection from '@/components/sections/WorkSection'
 import About from '@/components/sections/About'
 import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
+import Leadership from '@/components/sections/Leadership'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <WorkSection />
       <About />
       <ExperienceTimeline />
+      <Leadership />
     </main>
   )
 }

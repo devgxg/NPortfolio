@@ -121,6 +121,7 @@ export default function ProjectCards({ onRevealDiagram }: ProjectCardsProps) {
 
   return (
     <section
+      id="work"
       className="w-full py-24 px-8 md:px-14"
       style={{ backgroundColor: '#F5F5F0' }}
     >

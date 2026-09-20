@@ -20,4 +20,5 @@ html {
   background-color: #0A0A0A;
   color: #FAFAFA;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }

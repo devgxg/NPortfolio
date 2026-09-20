@@ -7,6 +7,28 @@ import { motion, AnimatePresence } from 'framer-motion'
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 const BADGE = 48 // badge diameter in px — spine is centered at BADGE/2
 
+function ShimmerBorder() {
+  return (
+    <motion.span
+      className="absolute inset-0 rounded-xl pointer-events-none"
+      animate={{
+        boxShadow: [
+          '0 0 0px 0px rgba(255,255,255,0)',
+          '0 0 12px 2px rgba(255,255,255,0.12)',
+          '0 0 0px 0px rgba(255,255,255,0)',
+        ],
+        borderColor: [
+          'rgba(255,255,255,0.06)',
+          'rgba(255,255,255,0.32)',
+          'rgba(255,255,255,0.06)',
+        ],
+      }}
+      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+      style={{ border: '1px solid rgba(255,255,255,0.06)' }}
+    />
+  )
+}
+
 interface Entry {
   id: string
   role: string
@@ -179,17 +201,17 @@ export default function ExperienceTimeline() {
                   onClick={() => toggle(entry.id)}
                   transition={{ layout: { duration: 0.38, ease: EASE } }}
                   className={[
-                    'flex-1 min-w-0 cursor-pointer rounded-xl p-5 md:p-6',
+                    'relative flex-1 min-w-0 cursor-pointer rounded-xl p-5 md:p-6',
                     !isExpanded
-                      ? '[@media(hover:hover)]:hover:scale-[1.01] [@media(hover:hover)]:hover:[border-color:rgba(255,255,255,0.14)]'
+                      ? '[@media(hover:hover)]:hover:scale-[1.01]'
                       : '',
                   ].join(' ')}
                   style={{
                     backgroundColor: '#111111',
-                    border: `1px solid ${isExpanded ? 'rgba(255,255,255,0.11)' : 'rgba(255,255,255,0.06)'}`,
-                    transition: 'border-color 0.2s, transform 0.2s',
+                    transition: 'transform 0.2s',
                   }}
                 >
+                  <ShimmerBorder />
                   {/* Always-visible header */}
                   <motion.div layout="position" className="flex items-start justify-between gap-3">
                     <div className="min-w-0">

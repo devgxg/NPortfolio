@@ -36,12 +36,12 @@ const SKILLS = [
   {
     category: 'Machine Learning & Deep Learning',
     items: 'Neural Networks (ANN), PyTorch, TensorFlow',
-    prominent: false,
+    prominent: true,
   },
   {
     category: 'Data Analysis',
     items: 'Scikit-learn, Pandas, NumPy, exploratory data analysis, statistical modeling',
-    prominent: false,
+    prominent: true,
   },
   {
     category: 'Computer Vision',
@@ -51,12 +51,12 @@ const SKILLS = [
   {
     category: 'Systems & Deployment',
     items: 'Python, FastAPI, REST APIs, MySQL, MongoDB, Docker',
-    prominent: false,
+    prominent: true,
   },
   {
     category: 'Also',
-    items: 'JavaScript, TailwindCSS, Git &GitHub',
-    prominent: false,
+    items: 'JavaScript, TailwindCSS, Git & GitHub',
+    prominent: true,
   },
 ]
 
