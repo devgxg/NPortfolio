@@ -20,7 +20,7 @@ export default function Hero() {
     <section className="relative min-h-screen bg-[#0A0A0A] overflow-hidden flex flex-col">
 
       {/* ── Ambient background ── */}
-      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.28 }} aria-hidden>
+      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.22 }} aria-hidden>
         <NeuralField />
       </div>
 
