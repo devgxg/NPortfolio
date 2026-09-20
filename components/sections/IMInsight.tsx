@@ -87,9 +87,10 @@ function ConnectingLine({ delay }: { delay: number }) {
   )
 }
 
-export default function IMInsight() {
+export default function IMInsight({ onCollapse }: { onCollapse?: () => void }) {
   return (
     <section
+      id="iminsight-diagram"
       className="w-full py-24 md:py-32 px-8 md:px-14"
       style={{ backgroundColor: '#F5F5F0' }}
     >
@@ -134,7 +135,7 @@ export default function IMInsight() {
       </motion.p>
 
       {/* ── Flow diagram ── */}
-      <div className="overflow-x-auto -mx-2 px-2 pb-2">
+      <div className="overflow-x-auto w-full pb-2">
         <div
           className="flex items-center"
           style={{ minWidth: 680 }}
@@ -170,6 +171,21 @@ export default function IMInsight() {
         deployment in defense environments — evaluated against low-resolution and
         partially occluded targets.
       </motion.p>
+
+      {/* ── Collapse trigger ── */}
+      {onCollapse && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          onClick={onCollapse}
+          className="mt-14 text-[#9A9A9A] hover:text-[#0A0A0A] text-[0.6rem] tracking-[0.24em] uppercase transition-colors"
+          style={{ fontFamily: 'var(--font-heading)' }}
+        >
+          ↑ Hide Breakdown
+        </motion.button>
+      )}
     </section>
   )
 }

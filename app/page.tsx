@@ -1,13 +1,17 @@
 import Hero from '@/components/hero/Hero'
 import WorkIntro from '@/components/sections/WorkIntro'
-import IMInsight from '@/components/sections/IMInsight'
+import WorkSection from '@/components/sections/WorkSection'
+import About from '@/components/sections/About'
+import ExperienceTimeline from '@/components/sections/ExperienceTimeline'
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <WorkIntro />
-      <IMInsight />
+      <WorkSection />
+      <About />
+      <ExperienceTimeline />
     </main>
   )
 }
