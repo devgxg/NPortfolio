@@ -41,19 +41,6 @@ interface Entry {
 
 const ENTRIES: Entry[] = [
   {
-    id: 'dee',
-    role: 'AI Engineer',
-    company: 'Dee Development Engineering Ltd',
-    duration: 'March 2026 – Present',
-    location: 'Faridabad, Haryana — On-site',
-    logo: '/images/logos/Dee logo.png',
-    bullets: [
-      'Engineered the Automated Inventory Code Allocation (AICD) system — full-stack AI app (FastAPI, React, LLM) matching MTO requirements against unallocated inventory using ASME B36.10/B36.19 logic, thickness interpolation, and step-down dimension algorithms.',
-      'Building an end-to-end AI pipeline extracting structured BOM from isometric piping drawing PDFs using Claude Vision API, pdf2image, and openpyxl.',
-      'Developed an ICD Code Generator — automated 19-character piping component code lookup via LLM-based tool and deterministic master sheet querying, reducing hours of manual Excel work to seconds.',
-    ],
-  },
-  {
     id: 'wesee',
     role: 'AI/ML Intern',
     company: 'WESEE, Indian Navy',
@@ -64,6 +51,19 @@ const ENTRIES: Entry[] = [
       'Built IMInsight — open-source, offline-capable AI image analysis system (React, Flask) for naval officers — object detection, threat identification, and anomaly detection in defense surveillance imagery.',
       'Fine-tuned YOLOv8 and CNN-based models for ship, personnel, radar, and aircraft detection; integrated CLIP and BLIP for contextual image captioning.',
       'Implemented NLP pipelines converting visual outputs into structured intelligence summaries for military-grade use cases.',
+    ],
+  },
+  {
+    id: 'dee',
+    role: 'AI Engineer',
+    company: 'Dee Development Engineering Ltd',
+    duration: 'March 2026 – Present',
+    location: 'Faridabad, Haryana — On-site',
+    logo: '/images/logos/Dee logo.png',
+    bullets: [
+      'Engineered the Automated Inventory Code Allocation (AICD) system — full-stack AI app (FastAPI, React, LLM) matching MTO requirements against unallocated inventory using ASME B36.10/B36.19 logic, thickness interpolation, and step-down dimension algorithms.',
+      'Building an end-to-end AI pipeline extracting structured BOM from isometric piping drawing PDFs using Claude Vision API, pdf2image, and openpyxl.',
+      'Developed an ICD Code Generator — automated 19-character piping component code lookup via LLM-based tool and deterministic master sheet querying, reducing hours of manual Excel work to seconds.',
     ],
   },
 ]
