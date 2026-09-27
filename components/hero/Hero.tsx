@@ -37,7 +37,7 @@ export default function Hero() {
         transition={{ delay: 0.9, duration: 0.7, ease: EASE }}
         className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between px-6 sm:px-8 md:px-14 pt-6 md:pt-8"
       >
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center flex-wrap gap-2.5">
           <span className="block w-1.5 h-1.5 rounded-full bg-[#FAFAFA] opacity-70 flex-shrink-0" />
           <span
             className="text-[#6B6B6B] text-[0.6rem] sm:text-[0.65rem] tracking-[0.18em] sm:tracking-[0.22em] uppercase"
@@ -45,6 +45,15 @@ export default function Hero() {
           >
             Available for work
           </span>
+          <span className="text-[#3A3A3A] text-[0.6rem]" aria-hidden>·</span>
+          <a
+            href="/Dev_Garg_Resume.pdf"
+            download
+            className="text-[#FAFAFA] text-[0.6rem] sm:text-[0.65rem] tracking-[0.18em] sm:tracking-[0.22em] uppercase underline underline-offset-4 decoration-[#3A3A3A] hover:decoration-[#FAFAFA] transition-colors"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            Download Resume
+          </a>
         </div>
         <nav>
           <ul className="flex items-center flex-wrap gap-4 sm:gap-6 md:gap-10">
