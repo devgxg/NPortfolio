@@ -11,7 +11,7 @@ const NAV_ITEMS = [
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
-  { label: 'Resume', href: '/Dev_Garg_Resume.pdf', external: true },
+  
 ]
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
