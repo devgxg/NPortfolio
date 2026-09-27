@@ -6,7 +6,13 @@ import { motion } from 'framer-motion'
 
 const NeuralField = dynamic(() => import('@/components/NeuralField'), { ssr: false })
 
-const NAV_ITEMS = ['Work', 'About', 'Experience', 'Contact']
+const NAV_ITEMS = [
+  { label: 'Work', href: '#work' },
+  { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Resume', href: '/Dev_Garg_Resume.pdf', external: true },
+]
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 
 // ⚠️  Portrait asset flag:
@@ -43,8 +49,8 @@ export default function Hero() {
         <nav>
           <ul className="flex items-center flex-wrap gap-4 sm:gap-6 md:gap-10">
             {NAV_ITEMS.map(item => (
-              <li key={item}>
-                <NavLink href={`#${item.toLowerCase()}`}>{item}</NavLink>
+              <li key={item.label}>
+                <NavLink href={item.href} external={item.external}>{item.label}</NavLink>
               </li>
             ))}
           </ul>
@@ -190,10 +196,12 @@ export default function Hero() {
 }
 
 /* ── Underline draw-in nav link ── */
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({ href, children, external }: { href: string; children: React.ReactNode; external?: boolean }) {
   return (
     <motion.a
       href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
       initial="rest"
       whileHover="hover"
       className="relative inline-block text-[#FAFAFA] text-[0.62rem] sm:text-[0.7rem] tracking-[0.14em] sm:tracking-[0.18em] uppercase"
