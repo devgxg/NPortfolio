@@ -152,7 +152,7 @@ export default function About() {
 
           <div className="mb-0.5">
             <span style={{ fontFamily: 'var(--font-heading)', fontSize: '0.73rem', fontWeight: 700, color: '#FAFAFA', letterSpacing: '0.01em' }}>
-              B.Tech CSE (AI/ML), Minor in Economics
+              B.Tech CSE, Minor in Economics
             </span>
           </div>
           <div className="mb-0.5">

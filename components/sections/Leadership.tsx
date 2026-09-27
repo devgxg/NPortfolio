@@ -156,6 +156,7 @@ export default function Leadership() {
                 filter: 'grayscale(100%)',
               }}
               whileHover={{ scale: 1.04, filter: 'grayscale(35%)' }}
+              whileTap={{ scale: 1.04, filter: 'grayscale(35%)' }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
               <Image
