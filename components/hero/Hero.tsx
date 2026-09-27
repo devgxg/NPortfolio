@@ -128,7 +128,7 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 1.1, ease: EASE }}
             className="shrink-0 relative"
-            style={{ zIndex: 10, marginLeft: -56, marginRight: -56 }}
+            style={{ zIndex: 10, marginLeft: -56, marginRight: -10 }}
           >
             <div
               style={{
