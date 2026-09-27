@@ -29,19 +29,19 @@ export default function Hero() {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.7, ease: EASE }}
-        className="relative z-10 flex items-center justify-between px-8 md:px-14 pt-8"
+        className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between px-6 sm:px-8 md:px-14 pt-6 md:pt-8"
       >
         <div className="flex items-center gap-2.5">
-          <span className="block w-1.5 h-1.5 rounded-full bg-[#FAFAFA] opacity-70" />
+          <span className="block w-1.5 h-1.5 rounded-full bg-[#FAFAFA] opacity-70 flex-shrink-0" />
           <span
-            className="text-[#6B6B6B] text-[0.65rem] tracking-[0.22em] uppercase"
+            className="text-[#6B6B6B] text-[0.6rem] sm:text-[0.65rem] tracking-[0.18em] sm:tracking-[0.22em] uppercase"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
             Available for work
           </span>
         </div>
         <nav>
-          <ul className="flex items-center gap-10">
+          <ul className="flex items-center flex-wrap gap-4 sm:gap-6 md:gap-10">
             {NAV_ITEMS.map(item => (
               <li key={item}>
                 <NavLink href={`#${item.toLowerCase()}`}>{item}</NavLink>
@@ -196,7 +196,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
       href={href}
       initial="rest"
       whileHover="hover"
-      className="relative inline-block text-[#FAFAFA] text-[0.7rem] tracking-[0.18em] uppercase"
+      className="relative inline-block text-[#FAFAFA] text-[0.62rem] sm:text-[0.7rem] tracking-[0.14em] sm:tracking-[0.18em] uppercase"
       style={{ fontFamily: 'var(--font-heading)', fontWeight: 300 }}
     >
       {children}
